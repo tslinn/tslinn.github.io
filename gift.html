@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
+    <link rel="stylesheet" href="css/nft-style.css">
+</head>
+
+<body>
+    <div class="title">GIFT</div>
+    <video loop autoplay webkit-playsinline playsinline preload="auto" crossOrigin="anonymous" id="arvideo" class="arvideo">
+        <source src="model/gift.webm" type='video/mp4'>
+        </video>
+
+    <script src="arnft/three.min.js"></script>
+    <script src="arnft/ARnft.js"></script>
+
+    <script>
+        var found = false;
+        var video = document.getElementById('arvideo');
+
+        ARnft.ARnft.init(640, 480, "marker/gift", 'arnft/config.json', false)
+            .then((nft) => {
+                video.pause();
+
+                document.addEventListener('getMatrixGL_RH', (ev) => {
+                    if (found == false) {
+                        console.log('nft found');
+                        found = true;
+                        video.style.visibility = "visible";
+                        video.play();
+                    }
+                });
+
+                document.addEventListener('nftTrackingLost', (ev) => {
+                    console.log('nft lost');
+                    found = false;
+                    video.style.visibility = "hidden";
+                    video.pause();
+                    video.currentTime = 0;
+                });
+
+            }).catch((error) => {
+                console.log(error);
+            });
+
+    </script>
+</body>
+
+</html>

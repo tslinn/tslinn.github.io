@@ -1,0 +1,28 @@
+{
+  "addPath": "",
+  "cameraPara": "arnft/camera_para.dat",
+  "videoSettings": {
+    "width": {
+      "min": 640,
+      "max": 800
+    },
+    "height": {
+      "min": 480,
+      "max": 600
+    },
+    "facingMode": "environment"
+  },
+  "loading": {
+    "logo": {
+      "src": "arnft/arNFT-logo.gif",
+      "alt": "LOGO"
+    },
+    "loadingMessage": "Loading..."
+  },
+  "renderer": {
+    "type": "three",
+    "alpha": true,
+    "antialias": true,
+    "precision": "mediump"
+  }
+}
